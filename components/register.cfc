@@ -9,4 +9,5 @@
     <cfproperty name="Street"> 
     <cfproperty name="email"> 
     <cfproperty name="phone_no"> 
+    <cfproperty name="ImageName"> 
 </cfcomponent>

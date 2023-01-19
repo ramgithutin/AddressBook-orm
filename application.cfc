@@ -4,5 +4,4 @@
 	<cfset this.ormEnabled = "true">  
 	<cfset this.datasource = "employee">
 	<cfset this.ormsettings={logsql="true"}>
-	<cfsetting showdebugoutput="false" />
 </cfcomponent>

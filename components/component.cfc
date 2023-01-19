@@ -51,25 +51,24 @@
         <cfargument name="street" default="#form.street#">
         <cfargument name="email" default="#form.email#">
         <cfargument name="phone" default="#form.phone#">
-        <cfquery name="check">
-            SELECT email
-            FROM register
-            WHERE email = <cfqueryparam value="#arguments.email#" cfsqltype="cf_sql_varchar">
-        </cfquery>
-        <cfif check.recordCount eq 0>
-            <cfquery name="create">
-                INSERT INTO register (Title,First_Name,Last_Name,Gender,DOB,address,Street,email,phone_no)
-                VALUES(<cfqueryparam value="#argumentS.optionId#" cfsqltype="cf_sql_varchar">,
-                    <cfqueryparam value="#argumentS.fName#" cfsqltype="cf_sql_varchar">,
-                    <cfqueryparam value="#argumentS.lName#" cfsqltype="cf_sql_varchar">,
-                    <cfqueryparam value="#argumentS.gender#" cfsqltype="cf_sql_varchar">,
-                    <cfqueryparam value="#argumentS.Dob#" cfsqltype="cf_sql_varchar">,
-                    <cfqueryparam value="#argumentS.address#" cfsqltype="cf_sql_varchar">,
-                    <cfqueryparam value="#argumentS.street#" cfsqltype="cf_sql_varchar">,
-                    <cfqueryparam value="#argumentS.email#" cfsqltype="cf_sql_varchar">,
-                    <cfqueryparam value="#argumentS.phone#" cfsqltype="cf_sql_varchar">);
-            </cfquery>
+        <cfargument name="photo" default="#form.fileUpload#">
+        <cfif len(trim(form.fileUpload))>
+                <cffile action="upload" fileField="fileUpload" nameConflict="overwrite" accept="image/jpg,image/jpeg,image/gif,image/png" result="thisResult" destination="#expandpath("./assets/contactImg/")#">
         </cfif>
+        <cfset session.imgName = thisResult.serverFile>
+        <cfquery name="create">
+            INSERT INTO register (Title,First_Name,Last_Name,Gender,DOB,address,Street,email,phone_no,ImageName)
+            VALUES(<cfqueryparam value="#argumentS.optionId#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#argumentS.fName#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#argumentS.lName#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#argumentS.gender#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#argumentS.Dob#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#argumentS.address#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#argumentS.street#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#argumentS.email#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#argumentS.phone#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#session.imgName#" cfsqltype="cf_sql_varchar">);
+        </cfquery>
         <cflocation url="mainpage.cfm">
     </cffunction> 
     <cffunction  name="viewTabel" returnType="array">

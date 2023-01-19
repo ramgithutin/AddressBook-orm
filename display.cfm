@@ -12,12 +12,12 @@
                         <th class="column blue"></th>
                         <th class="column blue"></th>
                     </tr>
-                    <cfinvoke  method="viewTabel" component="components/component" returnVariable="data">
+                    <cfinvoke method="viewTabel" component="components/component" returnVariable="data">
                     <cfloop array="#data#" index="data">
                         <tr class="borderNone">
                             <td class="column blue borderNone justfyCenter dflex"> 
-                                <cfset var=data.getGender()>
-                                <img src="assets/#var#.png" class="googleImg">
+                                <cfset var=data.getImageName()>
+                                <img src="assets/contactImg/#var#" class="googleImg">
                             </td>
                             <td class="column blue borderNone">#data.getFirst_Name()# #data.getLast_Name()#</td>
                             <td class="column blue borderNone">#data.getemail()#</td>
@@ -45,15 +45,15 @@
                         <th class="column blue">PHONE NUMBER</th>
                     </tr>
                     <cfinvoke  method="viewTabel" component="components/component" returnVariable="data">
-                    <cfloop query="data">
+                    <cfloop array="#data#" index="data">
                         <tr class="borderNone">
                             <td class="column blue borderNone justfyCenter dflex"> 
-                                <cfset var=data.Gender>
-                                <img src="assets/#var#.png" class="googleImg">
+                                <cfset var=data.getImageName()>
+                                <img src="assets/contactImg/#var#" class="googleImg">
                             </td>
-                            <td class="column blue borderNone">#data.First_Name# #data.Last_Name#</td>
-                            <td class="column blue borderNone">#data.email#</td>
-                            <td class="column blue borderNone">#data.phone_no#</td>
+                            <td class="column blue borderNone">#data.getFirst_Name()# #data.getLast_Name()#</td>
+                            <td class="column blue borderNone">#data.getemail()#</td>
+                            <td class="column blue borderNone">#data.getphone_no()#</td>
                         </tr>
                     </cfloop>
                 </table>

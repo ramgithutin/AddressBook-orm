@@ -2,7 +2,7 @@
     <cffunction  name="view" access="remote"  returntype="struct" returnformat="json">
         <cfargument name="personId" type="string" required="yes">
         <cfquery name="show" datasource="employee">
-            SELECT Title,First_Name,Last_Name,Gender,DOB,address,Street,email,phone_no
+            SELECT Title,First_Name,Last_Name,Gender,DOB,address,Street,email,phone_no,ImageName
             FROM register
             WHERE ID=<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.personId#">
         </cfquery>
@@ -16,6 +16,7 @@
         <cfset local.dateStruct.Street = "#show.Street#">
         <cfset local.dateStruct.email = "#show.email#">
         <cfset local.dateStruct.phone_no = "#show.phone_no#">
+        <cfset local.dateStruct.ImageName = "#show.ImageName#">
         <cfreturn dateStruct>
     </cffunction>
     <cffunction  name="updateData" access="remote">

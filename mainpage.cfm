@@ -38,7 +38,7 @@
                                     <div class="extraLarge blue padding10 ">CREATE CONTACT</div>
                                 </div>
                                 <div class="padding10 blue blueBottomBorder">Personal Contact</div>
-                                <form method="post" name="createFrom" onsubmit="return vadidateCreate()">
+                                <form method="post" name="createFrom" enctype="multipart/form-data" onsubmit="return vadidateCreate()">
                                     <div class="dflex justfyBetween">
                                         <div>
                                             <div class="blue padding10">Title</div>
@@ -107,7 +107,7 @@
                                     <cfinvoke method="databaseInsert" component="components/component">
                                 </cfif>
                             </div>
-                            <div class="dflex alignCenter justfyCenter width245">
+                            <div class="dflex alignCenter justfyCenter width245 background">
                                 <img src="assets/profile.png" alt="printer" class="bookImg">
                             </div>
                         </div>

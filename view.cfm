@@ -48,8 +48,7 @@
                     <span onclick="document.getElementById('id02').style.display='none'" class="dflex justfyCenter login">CLOSE</span>
                 </div>
             </div>                        
-            <div class="dflex alignCenter justfyCenter width245 background">
-                <img src="assets/profile.png" alt="printer" class="bookImg">
+            <div class="dflex alignCenter justfyCenter width245 background" id="imageDiv">
             </div>
         </div>
                         <cfelse>
