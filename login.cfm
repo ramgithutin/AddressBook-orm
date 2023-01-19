@@ -5,6 +5,7 @@
         <link rel="shortcut icon" href="assets/ABicon.png">
     </head>
     <body>
+        <cfoutput>    
         <cfinclude  template="header.cfm"> 
         <div class="dflex alignCenter justfyCenter middle">
             <div class="dflex">
@@ -32,7 +33,8 @@
                         </div>
                     </form>
                     <cfif structKeyExists(form,'login')>
-                        <cfinvoke method="loginform" component="components/component">
+                        <cfinvoke method="loginform" component="components/component" returnVariable="message">
+                        <div class="small red dflex justfyCenter">#message#</div>
                     </cfif>
                     <div class="dflex alignCenter justfyCenter small margin1010">Or Sign In Using</div>
                     <div class="dflex alignCenter justfyCenter margin1010">
@@ -44,5 +46,6 @@
             </div>
         </div>
         <script  src="js/script.js"></script>
+        </cfoutput>
     </body>
 </html>

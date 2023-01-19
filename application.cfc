@@ -1,7 +1,8 @@
 <cfcomponent output="false">
 	<cfset this.name = "samplewebsite">
 	<cfset this.sessionManagement = "true">
-	<cfset this.ormenabled = "true">  
+	<cfset this.ormEnabled = "true">  
 	<cfset this.datasource = "employee">
-<cfset this.ormsettings={cfclocation="components/artists.cfc", logsql="true"}>
+	<cfset this.ormsettings={logsql="true"}>
+	<cfsetting showdebugoutput="false" />
 </cfcomponent>

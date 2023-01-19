@@ -19,18 +19,26 @@
     <cffunction name="loginform" access="public">
         <cfargument name="Username" default="#form.loginUserId#">
         <cfargument name="loginPassword" default="#form.loginPassword#">
-        <cfquery name="userInfo">
+        <cfquery name="password">
+            SELECT name,emailid
+            FROM addressbook
+            WHERE password = <cfqueryparam value="#arguments.loginPassword#" cfsqltype="cf_sql_varchar">
+        </cfquery>
+        <cfquery name="userId">
             SELECT name,emailid
             FROM addressbook
             WHERE userid = <cfqueryparam value="#arguments.Username#" cfsqltype="cf_sql_varchar">
-            AND password = <cfqueryparam value="#arguments.loginPassword#" cfsqltype="cf_sql_varchar">
         </cfquery>
-        <cfif userInfo.recordCount>
-            <cfset session.name = userInfo.name>
-            <cfset Session.userFlag = 1>
-            <cflocation url="mainpage.cfm" addtoken="No">
+        <cfif userId.recordCount>
+            <cfif  password.recordCount>
+                <cfset session.name = userId.name>
+                <cfset Session.userFlag = 1>
+                <cflocation url="mainpage.cfm" addtoken="No">
+            <cfelse>
+                <cfreturn"Invalid Password">
+            </cfif>
         <cfelse>
-            <cflocation url="login.cfm" addtoken="No">
+            <cfreturn"Invalid Userid">
         </cfif>
     </cffunction>
     <cffunction name="databaseInsert">
@@ -64,11 +72,9 @@
         </cfif>
         <cflocation url="mainpage.cfm">
     </cffunction> 
-    <cffunction  name="viewTabel" returnType="query">
-        <cfquery name="display">
-            SELECT ID,First_Name,Last_Name,email,phone_no,Gender
-            FROM register;
-        </cfquery>
+    <cffunction  name="viewTabel" returnType="array">
+        <cfset ORMReload()>     
+        <cfset display = EntityLoad( 'register' )>
         <cfreturn display>
     </cffunction>
     <cffunction name="logout" access="public">

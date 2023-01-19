@@ -190,6 +190,9 @@ a{
     width: 200px;
     outline: none;
 }
+.red{
+    color: #ff0000;
+}
 .error{
     border: 1px solid red;
     border-style: solid none;
