@@ -20,7 +20,7 @@ function error(id){
     }
     
     function success(id){
-    document.getElementById(id).innerHTML="";
+    document.getElementById(id).style.display="none";
 }
 
 function nameValidate(fullName){ 
@@ -35,13 +35,15 @@ function nameValidate(fullName){
     }
 }
 function mailValidate(email){
-    if(email.value==""){
+    var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    if(email.value.match(mailformat)){
+        email.classList.remove("error");
+        success('emailError');
+        return true;
+    }else{
         email.classList.add("error");
         error('emailError');
         return false;
-    }else{
-        success('emailError');
-        return true;
     }
 }
 function userNameValidate(userName){

@@ -1,5 +1,5 @@
 function vadidateedit(){
-    var optionId = document.getElementById('editOptionId');
+    var editOptionId = document.getElementById('editOptionId');
     var fName = document.getElementById('editFName');
     var lName = document.getElementById('editLName');
     var gender = document.getElementById('editGender');
@@ -8,9 +8,8 @@ function vadidateedit(){
     var street = document.getElementById('editStreet');
     var email = document.getElementById('editemail');
     var phone = document.getElementById('editPhone');
-	var len=phone.value
 	console.log(len.length);
-	var validatedoptionId = optionIdValidate(optionId);
+	var validatedoptionId = optionIdValidate(editOptionId);
 	var validatedfname = fnameValidate(fName);
 	var validatedlname = lnameValidate(lName);
 	var validatedgender = genderValidate(gender);
@@ -18,14 +17,14 @@ function vadidateedit(){
 	var validatedaddress = addressValidate(address);
 	var validatedstreet = streetValidate(street);
 	var validatedemail = emailValidate(email);
-	var validatedphone = phoneValidate(phone,len);
+	var validatedphone = phoneValidate(phone);
 	if(validatedoptionId && validatedfname && validatedlname && validatedgender && validatedDob && validatedaddress && validatedstreet && validatedemail && validatedphone)
-	return true;
+	    return true;
 	else 
-	return false;
+	    return false;
 }
 
-function optionIdValidate(optionId){
+function optionIdValidate(editOptionId){
     if(optionId.value==""){
         editOptionId.classList.add("error");
         return false;
@@ -71,41 +70,42 @@ function DobValidate(Dob){
     }
 }
 function addressValidate(address){
-    if(address.value==""){
+    var addressformate = /^[A-Za-z]+$/;
+    if(address.value.match(addressformate)){
+        editAddress.classList.remove("error");
+        return true;
+    }else{
         editAddress.classList.add("error");
         return false;
-    }else{
-		editAddress.classList.remove("error");
-        return true;
     }
 }
 function streetValidate(street){
-    if(street.value==""){
+    var streetformate = /^[A-Za-z]+$/;
+    if(street.value.match(streetformate)){
+        editStreet.classList.remove("error");
+        return true;
+    }else{
         editStreet.classList.add("error");
         return false;
-    }else{
-		editStreet.classList.remove("error");
-        return true;
     }
 }
 function emailValidate(email){
-    if(email.value==""){
+    var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    if(email.value.match(mailformat)){
+        editemail.classList.remove("error");
+        return true;
+    }else{
         editemail.classList.add("error");
         return false;
-    }else{
-		editemail.classList.remove("error");
-        return true;
     }
 }
-function phoneValidate(phone,len){
-	if(phone.value==""){
-		editPhone.classList.add("error");
-        return false;
-	}else if(len.length =='10'){
+function phoneValidate(phone){
+    var phoneformat = /^\d{10}$/; 
+    if(phone.value.match(phoneformat)){
 		editPhone.classList.remove("error");
-		return true;
+        return true;
     }else{
-		editPhone.classList.add("error");
-		return false;
+        editPhone.classList.add("error");
+        return false;
     }
 }

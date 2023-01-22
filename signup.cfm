@@ -23,7 +23,7 @@
                         </div>
                         <div class="dflex alignCenter justfyCenter">
                             <div>
-                                <input type="email" placeholder="  Email ID" class="textInput" name="email" id="email" onblur="signUpValidate()"><br>
+                                <input type="text" placeholder="  Email ID" class="textInput" name="email" id="email" onblur="signUpValidate()"><br>
                                 <div id="emailError" class="small">this field is required</div>
                             </div>
                         </div>

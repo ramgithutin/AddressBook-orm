@@ -45,7 +45,7 @@
                     </tr>
                 </table>
                 <div class="dflex justfyCenter">
-                    <span onclick="document.getElementById('id02').style.display='none'" class="dflex justfyCenter login">CLOSE</span>
+                    <span onclick="document.getElementById('id02').style.display='none';removeImage();" class="dflex justfyCenter login">CLOSE</span>
                 </div>
             </div>                        
             <div class="dflex alignCenter justfyCenter width245 background" id="imageDiv">

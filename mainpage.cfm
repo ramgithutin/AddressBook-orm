@@ -75,7 +75,7 @@
                                     <div class="dflex justfyBetween">
                                         <div>
                                             <div class="blue padding10">Upload Photo*</div>
-                                            <input type="file" name="fileUpload" id="fileUpload" class="createText2">
+                                            <input type="file" name="fileUpload" id="fileUpload" class="createText2"  accept="image/png, image/jpeg" onchange="previewFile()">
                                         </div>
                                     </div>
                                     <div class="padding10 blue blueBottomBorder">Contact Details</div>
@@ -108,7 +108,7 @@
                                 </cfif>
                             </div>
                             <div class="dflex alignCenter justfyCenter width245 background">
-                                <img src="assets/profile.png" alt="printer" class="bookImg">
+                                <img src="assets/profile.png" alt="printer" class="bookImg" id="preview">
                             </div>
                         </div>
                     </div>

@@ -23,3 +23,7 @@ function postvalue(personId){
         }
     }) 
 }
+function removeImage(){
+    var image = $('#imageDiv').children("img");
+    image.remove();
+}
