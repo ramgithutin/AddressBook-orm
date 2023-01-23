@@ -20,18 +20,17 @@
         <cfreturn dateStruct>
     </cffunction>
     <cffunction  name="updateData" access="remote">
-        <cfargument name="personId" type="numeric" required="yes">
-        <cfargument name="optionID" type="string" required="yes">
-        <cfargument name="fName" type="string" required="yes">
-        <cfargument name="lName" type="string" required="yes">
-        <cfargument name="gender" type="string" required="yes">
-        <cfargument name="date" type="string" required="yes">
-        <cfargument name="address" type="string" required="yes">
-        <cfargument name="street" type="string" required="yes">
-        <cfargument name="email" type="string" required="yes">
-        <cfargument name="phone" type="string" required="yes">
-        <cfdump var="#arguments.personId#">
-        <cfquery name="update" datasource="employee">
+        <cfargument name="personId" type="numeric" required="yes" default="#form.personId#">
+        <cfargument name="optionID" type="string" required="yes" default="#form.editOptionId#">
+        <cfargument name="fName" type="string" required="yes" default="#form.editFName#">
+        <cfargument name="lName" type="string" required="yes" default="#form.editLName#">
+        <cfargument name="gender" type="string" required="yes" default="#form.editGender#">
+        <cfargument name="date" type="string" required="yes" default="#form.editDate#">
+        <cfargument name="address" type="string" required="yes" default="#form.editAddress#">
+        <cfargument name="street" type="string" required="yes" default="#form.editStreet#">
+        <cfargument name="email" type="string" required="yes" default="#form.editemail#">
+        <cfargument name="phone" type="string" required="yes" default="#form.editPhone#">
+        <cfquery name="update">
             UPDATE register 
             SET Title = <cfqueryparam value="#argumentS.optionId#" cfsqltype="cf_sql_varchar">,
                 First_Name = <cfqueryparam value="#argumentS.fName#" cfsqltype="cf_sql_varchar">,
@@ -44,5 +43,15 @@
                 phone_no = <cfqueryparam value="#argumentS.phone#" cfsqltype="cf_sql_varchar">
             WHERE ID = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.personId#">
         </cfquery>
+        <cfif len(trim(form.editFile))>
+            <cffile action="upload" fileField="editFile" nameConflict="overwrite" accept="image/jpg,image/jpeg,image/gif,image/png" result="thisResult" destination="#expandpath("./assets/contactImg/")#">
+            <cfset session.imgName2 = thisResult.serverFile>
+            <cfquery name="updateimage">
+                UPDATE register 
+                SET ImageName = <cfqueryparam value="#session.imgName2#" cfsqltype="cf_sql_varchar">
+                WHERE ID = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.personId#">
+            </cfquery>
+        </cfif>
+        <cflocation url="mainpage.cfm">
     </cffunction>
 </cfcomponent>

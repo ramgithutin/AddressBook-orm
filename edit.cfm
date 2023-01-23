@@ -14,10 +14,10 @@
 							<div class="extraLarge blue padding10 ">EDIT CONTACT</div>
 						</div>
 						<div class="padding10 blue blueBottomBorder">Personal Contact</div>
-						<form method="post" name="createFrom" onsubmit="return vadidateedit()">
+						<form method="post" name="createFrom" onsubmit="return vadidateedit()"  enctype="multipart/form-data">
 							<div class="dflex justfyBetween">
 								<div>
-									<input type="hidden" id="personId">
+									<input type="hidden" id="personId" name="personId">
 									<div class="blue padding10">Title</div>
 									<select name="editOptionId" id="editOptionId" class="borderNone">
 										<option selected=""></option>
@@ -77,18 +77,22 @@
 								</div>
 							</div>
 							<div class="dflex justfyCenter">
-								<input type="submit" name="editFormSubmit" id="editFormSubmit" class="login" value="EDIT" onclick="update()">
+								<input type="submit" name="editFormSubmit" id="editFormSubmit" class="login" value="EDIT">
                                 <button onclick="document.getElementById('id03').style.display='none'" class="login">Cancel</button>
 							</div>
 						</form>
 					</div>
-					<div class="dflex alignCenter justfyCenter width245 background" id="imageprofile"></div>
+					<div class="dflex alignCenter justfyCenter width245 background" >
+						<img src="" class="bookImg" id="imageprofile">
+					</div>
 				</div>
+				<cfif structKeyExists(form,'editFormSubmit')>
+					<cfinvoke method="updateData" component="components/getvalue">
+				</cfif>
             <cfelse>
                 <cflocation url="login.cfm">
 			</cfif>
 			<script src="js/edit.js"></script>
-			<script src="js/update.js"></script>
 		</cfoutput>
     </body>
 </html>

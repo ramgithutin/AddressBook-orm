@@ -18,8 +18,8 @@
                     <img src="assets/printer.png" alt="printer" class="imgIcon" onclick="PrintPage()">
                 </div>
                 <div class="dflex padding10 ">
-                    <div class="padding10 whiteBackground height">
-                        <div class="dflex justfyCenter">
+                    <div class="padding10 whiteBackground height margin100">
+                        <div class="dflex justfyCenter padding10">
                             <img src="assets/profile.png" alt="printer" class="bookImg">
                         </div>
                         <div class="dflex justfyCenter blue weight700">#session.name#</div>

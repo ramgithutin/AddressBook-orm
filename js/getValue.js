@@ -20,11 +20,8 @@ function getvalue(personId){
             $('#editStreet').val(object.STREET);
             $('#editemail').val(object.EMAIL);
             $('#editPhone').val(object.PHONE_NO);
-            let divLocation = document.getElementById("imageprofile");
-            let imgElement = document.createElement("img");
+            let imgElement = document.querySelector('#imageprofile');
             imgElement.src = "assets/contactImg/"+object.IMAGENAME;
-            imgElement.className="bookImg";
-            divLocation.append(imgElement);
         }
     }) 
 }

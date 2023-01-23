@@ -35,10 +35,10 @@
                 <cfset Session.userFlag = 1>
                 <cflocation url="mainpage.cfm" addtoken="No">
             <cfelse>
-                <cfreturn"Invalid Password">
+                <cfreturn "Invalid Password">
             </cfif>
         <cfelse>
-            <cfreturn"Invalid Userid">
+            <cfreturn "Invalid Userid">
         </cfif>
     </cffunction>
     <cffunction name="databaseInsert">

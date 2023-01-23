@@ -8,7 +8,6 @@ function vadidateedit(){
     var street = document.getElementById('editStreet');
     var email = document.getElementById('editemail');
     var phone = document.getElementById('editPhone');
-	console.log(len.length);
 	var validatedoptionId = optionIdValidate(editOptionId);
 	var validatedfname = fnameValidate(fName);
 	var validatedlname = lnameValidate(lName);
@@ -107,5 +106,20 @@ function phoneValidate(phone){
     }else{
         editPhone.classList.add("error");
         return false;
+    }
+}
+
+function previewFile2(){
+    console.log("swdw");
+    const preview = document.querySelector('#imageprofile');
+    const file = document.querySelector('#editFile').files[0];
+    const reader = new FileReader();
+  
+    reader.addEventListener("load", () => {
+      // convert image file to base64 string
+      preview.src = reader.result;
+    }, false);
+    if (file) {
+      reader.readAsDataURL(file);
     }
 }

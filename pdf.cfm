@@ -20,8 +20,8 @@
                     <cfloop array="#data#" index="data">
                         <tr class="borderNone">
                             <td class="column blue borderNone justfyCenter dflex"> 
-                                <cfset var=data.getImageName()>
-                                <img src="assets/contactImg/#var#" class="googleImg">
+                                <cfset local.variable=data.getImageName()>
+                                <img src="assets/contactImg/#local.variable#" class="googleImg">
                             </td>
                             <td class="column blue borderNone">#data.getFirst_Name()# #data.getLast_Name()#</td>
                             <td class="column blue borderNone">#data.getemail()#</td>

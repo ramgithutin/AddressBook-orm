@@ -44,6 +44,9 @@
 .margin1010{
     margin: 10px 10px;
 }
+.margin100{
+margin: 10px 0px;
+}
 /* font size */
 .xsmall{
     font-size: 10px;
@@ -203,4 +206,9 @@ a{
 }
 .w3-modal{
     padding: 30px;
+}
+.circleIcon{
+    width: 70px;
+    height: 70px;
+    border-radius:50px;
 }
